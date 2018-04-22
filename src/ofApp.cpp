@@ -3,14 +3,13 @@
 
 void ofApp::setup() {
 
-	//Hello World
-
 	ofSetFrameRate(60);
 
 	screen.init(LEVEL_WIDTH, LEVEL_HEIGHT);
-	screen.camera->init(keyboard);
 	level.init(screen, LEVEL_WIDTH, LEVEL_HEIGHT);
 	level.generateLevel();
+	level.player->init(&keyboard);
+	level.player->setLevel(LEVEL_WIDTH, LEVEL_HEIGHT);
 }
 
 void ofApp::update(){

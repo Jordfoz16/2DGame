@@ -19,5 +19,6 @@ public:
 	void loadSprite(std::string path);
 	void draw(float xPos, float yPos);
 	void setSize(int width, int height);
+	void setScale(float scale);
 };
 

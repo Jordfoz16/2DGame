@@ -28,3 +28,8 @@ void Sprite::setSize(int width, int height) {
 	this->width = width;
 	this->height = height;
 }
+
+void Sprite::setScale(float scale) {
+	width = width * scale;
+	height = height * scale;
+}

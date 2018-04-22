@@ -124,8 +124,8 @@ void Entity::setSpeed(float speed) {
 
 void Entity::setSpeed(float speed, float angle) {
 	angle = (PI / 180) * angle;
-	this->velX = cosf(angle) * speed;
-	this->velY = sinf(angle) * speed;
+	this->velX = cosf(angle) * speed * friction;
+	this->velY = sinf(angle) * speed * friction;
 }
 
 void Entity::setLevel(int width, int height) {

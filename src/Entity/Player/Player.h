@@ -2,11 +2,18 @@
 
 #include "../Entity/Entity.h"
 #include "../../Sprite/Sprite.h"
+#include "../Input/Keyboard.h"
 
 class Player : public Entity 
 {
 private:
 	
+	Keyboard* keys;
+
+	float thruster = 0;
+	float thrusterSpeed = 0.1;
+	float rotationSpeed = 5;
+
 public:
 
 	Player() : Entity() {};
@@ -16,7 +23,7 @@ public:
 
 	Sprite* playerSprite;
 
-	void init();
+	void init(Keyboard* keys);
 	void update(float xOffset, float yOffset);
 	void draw();
 };

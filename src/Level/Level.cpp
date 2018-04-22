@@ -7,14 +7,13 @@ void Level::init(Screen screen, int width, int height) {
 }
 
 void Level::generateLevel() {
-	for (int i = 0; i < 20; i++) {
+	for (int i = 0; i < 0; i++) {
 		spawnAsteroid();
 	}
 
-	Player* player = new Player();
+	player = new Player();
 	player->setSize(50);
-	player->setPosition((ofGetWindowWidth()/2) - player->getWidth()/2, (ofGetWindowHeight()/2) - player->getWidth()/2);
-	player->init();
+	player->setPosition(100, 100);
 	screen.addEntity(player);
 }
 
