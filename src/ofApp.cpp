@@ -3,6 +3,8 @@
 
 void ofApp::setup() {
 
+	//Hello World
+
 	ofSetFrameRate(60);
 
 	screen.init(LEVEL_WIDTH, LEVEL_HEIGHT);
