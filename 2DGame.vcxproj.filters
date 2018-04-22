@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\ofApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Asteroid\Asteroid.cpp">
+      <Filter>src\Entity\Asteroid</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Box\Box.cpp">
+      <Filter>src\Entity\Box</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Entity.cpp">
+      <Filter>src\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\Keyboard.cpp">
+      <Filter>src\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Level\Level.cpp">
+      <Filter>src\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Screen\Screen.cpp">
+      <Filter>src\Screen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Sprite\Sprite.cpp">
+      <Filter>src\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Camera\Camera.cpp">
+      <Filter>src\Entity\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Player\Player.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Entity">
+      <UniqueIdentifier>{28B6851C-A021-5377-51E6-11EF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Entity\Asteroid">
+      <UniqueIdentifier>{3D6505C9-051F-C0D5-F8C7-42CE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Entity\Box">
+      <UniqueIdentifier>{E48E9ACD-0C1F-53B5-2A4A-2EA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Input">
+      <UniqueIdentifier>{DB15F8D2-3664-5A4C-F827-2674}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Level">
+      <UniqueIdentifier>{2F5904B6-0D89-38CD-B68F-1F6D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Screen">
+      <UniqueIdentifier>{EAAAD3F7-1666-26CF-8FE2-FFE9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Sprite">
+      <UniqueIdentifier>{8CD1AD7C-FC1C-D8A2-803A-B0A7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Entity\Camera">
+      <UniqueIdentifier>{242265DE-9DAF-370B-E107-858F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\ofApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Asteroid\Asteroid.h">
+      <Filter>src\Entity\Asteroid</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Box\Box.h">
+      <Filter>src\Entity\Box</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Entity.h">
+      <Filter>src\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\Keyboard.h">
+      <Filter>src\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Level\Level.h">
+      <Filter>src\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Screen\Screen.h">
+      <Filter>src\Screen</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Sprite\Sprite.h">
+      <Filter>src\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Camera\Camera.h">
+      <Filter>src\Entity\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Player\Player.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+</Project>
