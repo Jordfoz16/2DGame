@@ -34,8 +34,6 @@ void Player::update(float xOffset, float yOffset) {
 	setSpeed(thruster, rot);
 
 	move();
-
-	std::cout << thruster << std::endl;
 }
 
 void Player::draw() {
@@ -43,6 +41,6 @@ void Player::draw() {
 	ofPushMatrix();
 	ofTranslate(xr, yr, 0);
 	ofRotateZ(rot);
-	playerSprite->draw(0 - width / 2, 0 - height / 2);
+	playerSprite->draw((0 - width / 2), (0 - height / 2) + 10);
 	ofPopMatrix();
 }
