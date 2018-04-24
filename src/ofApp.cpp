@@ -34,6 +34,9 @@ void ofApp::update(){
 		ss.str("");
 		ss << "Total Entities: " << screen.getEntityListSize();
 		ss << ", Drawing: " << screen.getEntityDrawSize();
+		ss << std::endl;
+		ss << "Total Projectiles: " << screen.getProjectileListSize();
+		ss << ", Drawing: " << screen.getProjectileDrawSize();
 		std::cout << ss.str() << std::endl;
 
 		timer--;

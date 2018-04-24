@@ -6,7 +6,6 @@
 */
 
 Entity::Entity() {
-	std::cout << "Entity Created" << std::endl;
 	xa = 0, ya = 0;
 	width = 10, height = 10;
 	mass = 1;
@@ -160,3 +159,4 @@ float Entity::getHeight() { return height; }
 float Entity::getVelX() { return velX; }
 float Entity::getVelY() { return velY; }
 float Entity::getMass() { return mass; }
+float Entity::getRotation() { return rot; }

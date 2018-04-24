@@ -1,12 +1,14 @@
 #include "Player.h"
 
 void Player::init(Keyboard* keys) {
+	
+	std::cout << "Player Created" << std::endl;
 	this->keys = keys;
 
 	playerSprite = new Sprite("sprites/rocket.png");
 	playerSprite->setScale(0.2);
 	friction = 0.98;
-	maxSpeed = 10;
+	maxSpeed = 5;
 }
 
 void Player::update(float xOffset, float yOffset) {

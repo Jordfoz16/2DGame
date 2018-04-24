@@ -7,7 +7,7 @@ void Level::init(Screen screen, int width, int height) {
 }
 
 void Level::generateLevel() {
-	for (int i = 0; i < 0; i++) {
+	for (int i = 0; i < 20; i++) {
 		spawnAsteroid();
 	}
 
@@ -21,8 +21,7 @@ void Level::spawnAsteroid() {
 	
 	bool freeSpace = false;
 	
-	float x;
-	float y;
+	float x, y;
 	float rot = rand() % 360;
 	float size = (rand() % 100) + 60;
 	float xSpeed = (rand() % 3) - 1;
@@ -59,10 +58,15 @@ void Level::spawnAsteroid() {
 
 void Level::update() {
 	collision();
+
+	if (player->keys->SPACE) {
+		Projectile* p = new Projectile(player->getXa(), player->getYa(), player->getRotation());
+		screen.addProjectile(p);
+	}
 }
 
 void Level::collision() {
-	std::vector<Entity*>* entityList = screen.getList();
+	std::vector<Entity*>* entityList = screen.getEntityList();
 	for (int i = 0; i < entityList->size() - 1; i++) {
 		for (int j = i + 1; j < entityList->size(); j++) {
 			Entity* entityA = entityList->at(i);

@@ -38,6 +38,7 @@
       <Filter>src\Entity\Camera</Filter>
     </ClCompile>
     <ClCompile Include="src\Entity\Player\Player.cpp" />
+    <ClCompile Include="src\Projectile\Projectile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -100,6 +101,7 @@
       <Filter>src\Entity\Camera</Filter>
     </ClInclude>
     <ClInclude Include="src\Entity\Player\Player.h" />
+    <ClInclude Include="src\Projectile\Projectile.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

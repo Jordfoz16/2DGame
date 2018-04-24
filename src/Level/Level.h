@@ -5,6 +5,7 @@
 #include "../Screen/Screen.h"
 #include "../Entity/Asteroid/Asteroid.h"
 #include "../Entity/Player/Player.h"
+#include "../Projectile/Projectile.h"
 
 
 class Level {

@@ -2,6 +2,8 @@
 
 void Asteroid::init() {
 
+	std::cout << "Asteroid Created" << std::endl;
+
 	int random = rand() % 2;
 	switch (random)
 	{

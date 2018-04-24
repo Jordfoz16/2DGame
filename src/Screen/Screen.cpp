@@ -22,10 +22,21 @@ void Screen::update() {
 		if (!entityList->size()) return;
 		entityList->at(i)->update(camera->getXOffset(), camera->getYOffset());
 	}
+
+	for (int i = 0; i < projectileList->size(); i++) {
+		if (projectileList->at(i)->toRemove()) {
+			delete projectileList->at(i);
+			projectileList->erase(projectileList->begin() + i);
+		}
+
+		if (!projectileList->size()) return;
+		projectileList->at(i)->update(camera->getXOffset(), camera->getYOffset());
+	}
 }
 
 void Screen::draw() {
-	drawSize = 0;
+	drawSizeEntity = 0;
+	drawSizeProjectile = 0;
 
 	ofSetColor(0);
 	ofDrawRectangle(0 - camera->getXOffset(), 0 - camera->getYOffset(), levelWidth, levelHeight);
@@ -36,7 +47,18 @@ void Screen::draw() {
 		if (e->getXr() + e->getWidth() >= 0 && e->getXr() <= ofGetWindowWidth() + 50) {
 			if (e->getYr() + e->getHeight() >= 0 && e->getYr() <= ofGetWindowHeight() + 50) {
 				entityList->at(i)->draw();
-				drawSize++;
+				drawSizeEntity++;
+			}
+		}
+	}
+
+	for (int i = 0; i < projectileList->size(); i++) {
+		Projectile* p = projectileList->at(i);
+
+		if (p->getXr() + p->getLength() >= 0 && p->getXr() <= ofGetWindowWidth() + 50) {
+			if (p->getYr() + p->getLength() >= 0 && p->getYr() <= ofGetWindowHeight() + 50) {
+				projectileList->at(i)->draw();
+				drawSizeProjectile++;
 			}
 		}
 	}
@@ -46,8 +68,16 @@ void Screen::addEntity(Entity* e) {
 	entityList->push_back(e);
 }
 
-std::vector<Entity*>* Screen::getList() {
+void Screen::addProjectile(Projectile* p) {
+	projectileList->push_back(p);
+}
+
+std::vector<Entity*>* Screen::getEntityList() {
 	return entityList;
+}
+
+std::vector<Projectile*>* Screen::getProjectileList() {
+	return projectileList;
 }
 
 Entity* Screen::getEntityAt(int index) {
@@ -58,6 +88,14 @@ int Screen::getEntityListSize() {
 	return entityList->size();
 }
 
+int Screen::getProjectileListSize() {
+	return projectileList->size();
+}
+
 int Screen::getEntityDrawSize() {
-	return drawSize;
+	return drawSizeEntity;
+}
+
+int Screen::getProjectileDrawSize() {
+	return drawSizeProjectile;
 }

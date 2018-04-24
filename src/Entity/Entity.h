@@ -69,4 +69,5 @@ public:
 	float getVelY();
 	float getMass();
 	float getSpeed();
+	float getRotation();
 };
