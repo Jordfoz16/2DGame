@@ -9,6 +9,7 @@ void Player::init(Keyboard* keys) {
 	playerSprite->setScale(0.2);
 	friction = 0.98;
 	maxSpeed = 5;
+	coolDown = coolDown * 60;
 }
 
 void Player::update(float xOffset, float yOffset) {
@@ -45,4 +46,8 @@ void Player::draw() {
 	ofRotateZ(rot);
 	playerSprite->draw((0 - width / 2), (0 - height / 2) + 10);
 	ofPopMatrix();
+}
+
+float Player::getCoolDown() {
+	return coolDown;
 }

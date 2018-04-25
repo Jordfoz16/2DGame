@@ -13,6 +13,8 @@ private:
 	Screen screen;
 	int width, height;
 
+	int coolDown = 0;
+
 	void calcCollision(Entity* e1, Entity* e2);
 
 public:

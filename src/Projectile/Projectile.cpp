@@ -8,6 +8,7 @@ Projectile::Projectile(float xa, float ya, float rot)
 
 	length = 50;
 
+	lifeTime = lifeTime * 60;
 	setSpeed(speed, rot);
 }
 
@@ -15,6 +16,11 @@ void Projectile::update(float xOffset, float yOffset) {
 	xr = xa;
 	yr = ya;
 
+	counter++;
+	if (counter > lifeTime) {
+		remove();
+		counter = 0;
+	}
 	move();
 }
 

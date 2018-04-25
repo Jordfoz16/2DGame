@@ -11,6 +11,8 @@ private:
 	float thruster = 0;
 	float thrusterSpeed = 0.1;
 	float rotationSpeed = 5;
+	
+	float coolDown = 0.5;
 
 public:
 
@@ -25,4 +27,6 @@ public:
 	void init(Keyboard* keys);
 	void update(float xOffset, float yOffset);
 	void draw();
+
+	float getCoolDown();
 };

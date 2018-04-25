@@ -12,12 +12,14 @@ void Screen::init(int levelWidth, int levelHeight){
 
 void Screen::update() {
 
+	
 	camera->update();
 
 	for (int i = 0; i < entityList->size(); i++) {
 		if (entityList->at(i)->toRemove()) {
 			delete entityList->at(i);
 			entityList->erase(entityList->begin() + i);
+			continue;
 		}
 		if (!entityList->size()) return;
 		entityList->at(i)->update(camera->getXOffset(), camera->getYOffset());
@@ -27,6 +29,7 @@ void Screen::update() {
 		if (projectileList->at(i)->toRemove()) {
 			delete projectileList->at(i);
 			projectileList->erase(projectileList->begin() + i);
+			continue;
 		}
 
 		if (!projectileList->size()) return;

@@ -27,8 +27,13 @@ void Level::spawnAsteroid() {
 	float xSpeed = (rand() % 3) - 1;
 	float ySpeed = (rand() % 3) - 1;
 
+	int spawnCounter = 0;
+
 	while (!freeSpace) {
 		if (screen.getEntityListSize() == 0) freeSpace = true;
+
+		spawnCounter++;
+		if (spawnCounter > 20) return;
 
 		x = rand() % width;
 		y = rand() % height;
@@ -59,13 +64,20 @@ void Level::spawnAsteroid() {
 void Level::update() {
 	collision();
 
-	if (player->keys->SPACE) {
-		Projectile* p = new Projectile(player->getXa(), player->getYa(), player->getRotation());
-		screen.addProjectile(p);
+	coolDown++;
+
+	if (coolDown >= player->getCoolDown()) {
+		if (player->keys->SPACE) {
+			Projectile* p = new Projectile(player->getXa(), player->getYa() - 3, player->getRotation());
+			screen.addProjectile(p);
+			coolDown = 0;
+		}
 	}
 }
 
 void Level::collision() {
+
+	//Asteroid Collision
 	std::vector<Entity*>* entityList = screen.getEntityList();
 	for (int i = 0; i < entityList->size() - 1; i++) {
 		for (int j = i + 1; j < entityList->size(); j++) {
@@ -85,6 +97,27 @@ void Level::collision() {
 			}
 		}
 	}
+
+	//Projectile and Asteroid Collision
+	std::vector<Projectile*>* projectileList = screen.getProjectileList();
+	for (int i = 0; i < projectileList->size(); i++) {
+		for (int j = 0; j < entityList->size(); j++) {
+			if (!entityList->at(j)->isCollidable()) continue;
+			
+			Projectile* p1 = projectileList->at(i);
+			Entity* e1 = entityList->at(j);
+
+			float xDist = e1->getXa() - p1->getXa();
+			float yDist = e1->getYa() - p1->getYa();
+			float distance = sqrtf((xDist * xDist) + (yDist * yDist));
+
+			if (distance <  (e1->getWidth() / 2)) {
+				p1->remove();
+				e1->remove();
+			}
+		}
+	}
+
 }
 
 void Level::calcCollision(Entity* e1, Entity* e2) {

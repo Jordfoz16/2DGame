@@ -91,8 +91,6 @@ void Entity::move() {
 		}
 	}
 
-	//std::cout << "Speed = " << getSpeed() << std::endl;
-
 	velX *= friction;
 	velY *= friction;
 
