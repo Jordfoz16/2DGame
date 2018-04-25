@@ -8,13 +8,19 @@ Projectile::Projectile(float xa, float ya, float rot)
 
 	length = 50;
 
+	lifeTime = lifeTime * 60;
 	setSpeed(speed, rot);
 }
 
 void Projectile::update(float xOffset, float yOffset) {
-	xr = xa;
-	yr = ya;
+	xr = xa - xOffset;
+	yr = ya - yOffset;
 
+	counter++;
+	if (counter > lifeTime) {
+		remove();
+		counter = 0;
+	}
 	move();
 }
 
@@ -26,11 +32,11 @@ void Projectile::move() {
 void Projectile::draw() {
 	ofSetColor(255, 0, 0);
 
-	float xa2 = (cosf(rot) * length) + xa;
-	float ya2 = (sin(rot) * length) + ya;
+	float xr2 = (cosf(rot) * length) + xr;
+	float yr2 = (sin(rot) * length) + yr;
 
 	ofSetLineWidth(5);
-	ofDrawLine(xa, ya, xa2, ya2);
+	ofDrawLine(xr, yr, xr2, yr2);
 }
 
 float Projectile::getLength() {
