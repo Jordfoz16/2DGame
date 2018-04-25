@@ -14,8 +14,8 @@ void Player::init(Keyboard* keys) {
 
 void Player::update(float xOffset, float yOffset) {
 	
-	xr = xa;
-	yr = ya;
+	xr = xa - xOffset;
+	yr = ya - yOffset;
 
 	if (keys->UP) {
 		thruster += thrusterSpeed;

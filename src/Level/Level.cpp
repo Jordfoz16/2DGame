@@ -62,6 +62,7 @@ void Level::spawnAsteroid() {
 }
 
 void Level::update() {
+	screen.camera->setPosition(player->getXa() - (ofGetWindowWidth() / 2), player->getYa() - (ofGetWindowHeight() / 2));
 	collision();
 
 	coolDown++;
