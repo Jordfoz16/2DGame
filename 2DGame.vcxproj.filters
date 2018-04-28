@@ -39,6 +39,8 @@
     </ClCompile>
     <ClCompile Include="src\Entity\Player\Player.cpp" />
     <ClCompile Include="src\Projectile\Projectile.cpp" />
+    <ClCompile Include="src\Particles\Particles.cpp" />
+    <ClCompile Include="src\Particles\ParticleEmitter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -102,6 +104,8 @@
     </ClInclude>
     <ClInclude Include="src\Entity\Player\Player.h" />
     <ClInclude Include="src\Projectile\Projectile.h" />
+    <ClInclude Include="src\Particles\Particles.h" />
+    <ClInclude Include="src\Particles\ParticleEmitter.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

@@ -113,6 +113,7 @@ void Level::collision() {
 			float distance = sqrtf((xDist * xDist) + (yDist * yDist));
 
 			if (distance <  (e1->getWidth() / 2)) {
+				screen.addEmitter(new ParticleEmitter(e1->getXa(), e1->getYa(), 200));
 				p1->remove();
 				e1->remove();
 			}
