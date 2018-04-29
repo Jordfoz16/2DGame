@@ -171,6 +171,8 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Particles\ParticleEmitter.cpp" />
+    <ClCompile Include="src\Particles\Particles.cpp" />
     <ClCompile Include="src\Projectile\Projectile.cpp" />
     <ClCompile Include="src\Entity\Player\Player.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -185,6 +187,8 @@
     <ClCompile Include="src\Sprite\Sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Particles\ParticleEmitter.h" />
+    <ClInclude Include="src\Particles\Particles.h" />
     <ClInclude Include="src\Projectile\Projectile.h" />
     <ClInclude Include="src\Entity\Player\Player.h" />
     <ClInclude Include="src\ofApp.h" />
