@@ -6,6 +6,7 @@
 #include "../Entity/Asteroid/Asteroid.h"
 #include "../Entity/Player/Player.h"
 #include "../Projectile/Projectile.h"
+#include "../Particles/ParticleEmitter.h"
 
 
 class Level {

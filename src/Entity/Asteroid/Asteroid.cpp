@@ -27,6 +27,9 @@ void Asteroid::init() {
 void Asteroid::update(float xOffset, float yOffset) {
 	xr = xa - xOffset;
 	yr = ya - yOffset;
+
+	if (width < 50) remove();
+
 	setRotation(rot += rotationSpeed);
 	move();
 }
@@ -38,5 +41,4 @@ void Asteroid::draw() {
 	ofRotateZ(rot);
 	asteroidSprite->draw(0 - width/2, 0 - height/2);
 	ofPopMatrix();
-	//ofDrawEllipse(xr, yr, width, height);
 }
