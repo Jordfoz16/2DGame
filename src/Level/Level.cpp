@@ -115,30 +115,6 @@ void Level::collision() {
 			if (distance <  (e1->getWidth() / 2)) {
 				p1->remove();
 				e1->remove();
-				screen.addEmitter(new ParticleEmitter(e1->getXa(), e1->getYa(), 200));
-				
-				if (e1->getWidth() / 2 < 50) continue;
-
-				Asteroid* a1 = new Asteroid(e1->getXa() + e1->getWidth() / 4, e1->getYa() + e1->getWidth() / 4, e1->getWidth() / 2, e1->getHeight() / 2);
-					
-				a1->init();
-				a1->asteroidSprite->setSize(e1->getWidth() / 2, e1->getHeight() / 2);
-				a1->setRotation(e1->getRotation());
-				a1->setVelocity(e1->getVelX(), e1->getVelY() * -1);
-				a1->setLevel(width, height);
-
-				screen.addEntity(a1);
-
-				Asteroid* a2 = new Asteroid(e1->getXa() - e1->getWidth() / 4, e1->getYa() - e1->getWidth() / 4, e1->getWidth() / 2, e1->getHeight() / 2);
-
-				a2->init();
-				a2->asteroidSprite->setSize(e1->getWidth() / 2, e1->getHeight() / 2);
-				a2->setRotation(e1->getRotation() * -1);
-				a2->setVelocity(e1->getVelX() * -1, e1->getVelY());
-				a2->setLevel(width, height);
-
-				screen.addEntity(a2);
-				
 			}
 		}
 	}

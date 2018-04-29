@@ -35,17 +35,6 @@ void Screen::update() {
 		if (!projectileList->size()) return;
 		projectileList->at(i)->update(camera->getXOffset(), camera->getYOffset());
 	}
-
-	for (int i = 0; i < emitterList->size(); i++) {
-		if (emitterList->at(i)->getSize() == 0) {
-			delete emitterList->at(i);
-			emitterList->erase(emitterList->begin() + i);
-			continue;
-		}
-
-		if (!emitterList->size()) return;
-		emitterList->at(i)->update(camera->getXOffset(), camera->getYOffset());
-	}
 }
 
 void Screen::draw() {
@@ -76,10 +65,6 @@ void Screen::draw() {
 			}
 		}
 	}
-
-	for (int i = 0; i < emitterList->size(); i++) {
-		emitterList->at(i)->draw();
-	}
 }
 
 void Screen::addEntity(Entity* e) {
@@ -90,10 +75,6 @@ void Screen::addProjectile(Projectile* p) {
 	projectileList->push_back(p);
 }
 
-void Screen::addEmitter(ParticleEmitter* e) {
-	emitterList->push_back(e);
-}
-
 std::vector<Entity*>* Screen::getEntityList() {
 	return entityList;
 }
@@ -101,7 +82,6 @@ std::vector<Entity*>* Screen::getEntityList() {
 std::vector<Projectile*>* Screen::getProjectileList() {
 	return projectileList;
 }
-
 
 Entity* Screen::getEntityAt(int index) {
 	return entityList->at(index);
