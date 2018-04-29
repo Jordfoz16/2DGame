@@ -19,9 +19,8 @@ void ofApp::update(){
 	ofResetElapsedTimeCounter();
 
 	keyboard.update();
-	level.update();
 	screen.update();
-	
+	level.update();
 
 	//Updates the frame counter every second
 	if (timer >= 1) {
