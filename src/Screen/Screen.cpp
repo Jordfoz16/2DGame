@@ -12,18 +12,8 @@ void Screen::init(int levelWidth, int levelHeight){
 
 void Screen::update() {
 
-	
 	camera->update();
-
-	for (int i = 0; i < entityList->size(); i++) {
-		if (entityList->at(i)->toRemove()) {
-			delete entityList->at(i);
-			entityList->erase(entityList->begin() + i);
-			continue;
-		}
-		if (!entityList->size()) return;
-		entityList->at(i)->update(camera->getXOffset(), camera->getYOffset());
-	}
+	player->update(camera->getXOffset(), camera->getYOffset());
 
 	for (int i = 0; i < projectileList->size(); i++) {
 		if (projectileList->at(i)->toRemove()) {
@@ -34,6 +24,16 @@ void Screen::update() {
 
 		if (!projectileList->size()) return;
 		projectileList->at(i)->update(camera->getXOffset(), camera->getYOffset());
+	}
+
+	for (int i = 0; i < entityList->size(); i++) {
+		if (entityList->at(i)->toRemove()) {
+			delete entityList->at(i);
+			entityList->erase(entityList->begin() + i);
+			continue;
+		}
+		if (!entityList->size()) return;
+		entityList->at(i)->update(camera->getXOffset(), camera->getYOffset());
 	}
 
 	for (int i = 0; i < emitterList->size(); i++) {
@@ -54,6 +54,8 @@ void Screen::draw() {
 
 	ofSetColor(0);
 	ofDrawRectangle(0 - camera->getXOffset(), 0 - camera->getYOffset(), levelWidth, levelHeight);
+
+	player->draw();
 
 	for (int i = 0; i < entityList->size(); i++) {
 		Entity* e = entityList->at(i);
@@ -80,6 +82,10 @@ void Screen::draw() {
 	for (int i = 0; i < emitterList->size(); i++) {
 		emitterList->at(i)->draw();
 	}
+}
+
+void Screen::addPlayer(Player* p) {
+	player = p;
 }
 
 void Screen::addEntity(Entity* e) {

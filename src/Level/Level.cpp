@@ -1,7 +1,7 @@
 #include "Level.h"
 
-void Level::init(Screen screen, int width, int height) {
-	this->screen = screen;
+void Level::init(Screen &screen, int width, int height) {
+	this->screen = &screen;
 	this->width = width;
 	this->height = height;
 }
@@ -14,7 +14,7 @@ void Level::generateLevel() {
 	player = new Player();
 	player->setSize(50);
 	player->setPosition(100, 100);
-	screen.addEntity(player);
+	screen->addPlayer(player);
 }
 
 void Level::spawnAsteroid() {
@@ -30,7 +30,7 @@ void Level::spawnAsteroid() {
 	int spawnCounter = 0;
 
 	while (!freeSpace) {
-		if (screen.getEntityListSize() == 0) freeSpace = true;
+		if (screen->getEntityListSize() == 0) freeSpace = true;
 
 		spawnCounter++;
 		if (spawnCounter > 20) return;
@@ -39,12 +39,12 @@ void Level::spawnAsteroid() {
 		y = rand() % height;
 		bool hit = false;
 
-		for (int i = 0; i < screen.getEntityListSize(); i++) {
+		for (int i = 0; i < screen->getEntityListSize(); i++) {
 
-			float xDist = x - screen.getEntityAt(i)->getXa();
-			float yDist = y - screen.getEntityAt(i)->getYa();
+			float xDist = x - screen->getEntityAt(i)->getXa();
+			float yDist = y - screen->getEntityAt(i)->getYa();
 			float distance = sqrtf((xDist * xDist) + (yDist * yDist));
-			float radiusTotal = (size + screen.getEntityAt(i)->getWidth()) / 2;
+			float radiusTotal = (size + screen->getEntityAt(i)->getWidth()) / 2;
 
 			if (radiusTotal > distance) hit = true;
 		}
@@ -58,11 +58,11 @@ void Level::spawnAsteroid() {
 	temp->setRotation(rot);
 	temp->setVelocity(xSpeed, ySpeed);
 	temp->setLevel(width, height);
-	screen.addEntity(temp);
+	screen->addEntity(temp);
 }
 
 void Level::update() {
-	screen.camera->setPosition(player->getXa() - (ofGetWindowWidth() / 2), player->getYa() - (ofGetWindowHeight() / 2));
+	screen->camera->setPosition(player->getXa() - (ofGetWindowWidth() / 2), player->getYa() - (ofGetWindowHeight() / 2));
 	collision();
 
 	coolDown++;
@@ -70,7 +70,7 @@ void Level::update() {
 	if (coolDown >= player->getCoolDown()) {
 		if (player->keys->SPACE) {
 			Projectile* p = new Projectile(player->getXa(), player->getYa() - 3, player->getRotation());
-			screen.addProjectile(p);
+			screen->addProjectile(p);
 			coolDown = 0;
 		}
 	}
@@ -79,7 +79,7 @@ void Level::update() {
 void Level::collision() {
 
 	//Asteroid Collision
-	std::vector<Entity*>* entityList = screen.getEntityList();
+	std::vector<Entity*>* entityList = screen->getEntityList();
 	for (int i = 0; i < entityList->size() - 1; i++) {
 		for (int j = i + 1; j < entityList->size(); j++) {
 			Entity* entityA = entityList->at(i);
@@ -100,7 +100,7 @@ void Level::collision() {
 	}
 
 	//Projectile and Asteroid Collision
-	std::vector<Projectile*>* projectileList = screen.getProjectileList();
+	std::vector<Projectile*>* projectileList = screen->getProjectileList();
 	for (int i = 0; i < projectileList->size(); i++) {
 		for (int j = 0; j < entityList->size(); j++) {
 			if (!entityList->at(j)->isCollidable()) continue;
@@ -115,7 +115,7 @@ void Level::collision() {
 			if (distance <  (e1->getWidth() / 2)) {
 				p1->remove();
 				e1->remove();
-				screen.addEmitter(new ParticleEmitter(e1->getXa(), e1->getYa(), 200));
+				screen->addEmitter(new ParticleEmitter(e1->getXa(), e1->getYa(), 200));
 				
 				if (e1->getWidth() / 2 < 50) continue;
 
@@ -127,7 +127,7 @@ void Level::collision() {
 				a1->setVelocity(e1->getVelX(), e1->getVelY() * -1);
 				a1->setLevel(width, height);
 
-				screen.addEntity(a1);
+				screen->addEntity(a1);
 
 				Asteroid* a2 = new Asteroid(e1->getXa() - e1->getWidth() / 4, e1->getYa() - e1->getWidth() / 4, e1->getWidth() / 2, e1->getHeight() / 2);
 
@@ -137,12 +137,22 @@ void Level::collision() {
 				a2->setVelocity(e1->getVelX() * -1, e1->getVelY());
 				a2->setLevel(width, height);
 
-				screen.addEntity(a2);
+				screen->addEntity(a2);
 				
 			}
 		}
 	}
 
+	//Player and Asteroid Collision
+	for (int i = 0; i < entityList->size(); i++) {
+		float xDist = entityList->at(i)->getXa() - player->getXa();
+		float yDist = entityList->at(i)->getYa() - player->getYa();
+		float distance = sqrtf((xDist * xDist) + (yDist * yDist));
+
+		if (distance < (entityList->at(i)->getWidth() - player->getWidth()) / 2) {
+			player->remove();
+		}
+	}
 }
 
 void Level::calcCollision(Entity* e1, Entity* e2) {

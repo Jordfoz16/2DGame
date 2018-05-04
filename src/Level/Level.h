@@ -11,7 +11,7 @@
 
 class Level {
 private:
-	Screen screen;
+	Screen* screen;
 	int width, height;
 
 	int coolDown = 0;
@@ -22,7 +22,7 @@ public:
 
 	Player* player;
 
-	void init(Screen screen, int width, int height);
+	void init(Screen &screen, int width, int height);
 	void generateLevel();
 	void spawnAsteroid();
 	void update();

@@ -6,12 +6,6 @@
 #include "Input/Keyboard.h"
 #include "Screen/Screen.h"
 #include "Level/Level.h"
-/*
-	TODO List:
-		-Make Camera follow player not Player followers camera
-		-Player controls
-		-Player rotation and physics
-*/
 
 class ofApp : public ofBaseApp{
 private:
