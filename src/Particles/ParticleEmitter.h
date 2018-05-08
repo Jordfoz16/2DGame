@@ -14,8 +14,9 @@ private:
 	std::vector<Particles*>* particlesList = new std::vector<Particles*>;
 
 public:
+
 	ParticleEmitter(float xa, float ya, int amount);
-	~ParticleEmitter();
+	ParticleEmitter(ofColor colour, float xa, float ya, int amount);
 
 	void update(float xOffset, float yOffset);
 	void draw();

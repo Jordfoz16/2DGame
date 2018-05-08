@@ -1,10 +1,5 @@
 #include "Entity.h"
 
-/*
-	Entity base class
-	Contains default functions for update, draw, move and removing.
-*/
-
 Entity::Entity() {
 	xa = 0, ya = 0;
 	width = 10, height = 10;

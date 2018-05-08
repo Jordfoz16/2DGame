@@ -1,20 +1,24 @@
 #include "ParticleEmitter.h"
 
 
-
 ParticleEmitter::ParticleEmitter(float xa, float ya, int amount){
 	this->xa = xa;
 	this->ya = ya;
 
 	for (int i = 0; i < amount; i++) {
-		Particles* p = new Particles();
+		Particles* p = new Particles(ofColor(195, 195, 195));
 		addParticle(p);
 	}
 }
 
+ParticleEmitter::ParticleEmitter(ofColor colour, float xa, float ya, int amount) {
+	this->xa = xa;
+	this->ya = ya;
 
-ParticleEmitter::~ParticleEmitter(){
-	
+	for (int i = 0; i < amount; i++) {
+		Particles* p = new Particles(colour);
+		addParticle(p);
+	}
 }
 
 void ParticleEmitter::update(float xOffset, float yOffset) {
