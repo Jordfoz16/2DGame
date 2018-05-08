@@ -36,10 +36,12 @@ void Player::update(float xOffset, float yOffset) {
 	
 	setSpeed(thruster, rot);
 
+	if (toRemove()) return;
 	move();
 }
 
 void Player::draw() {
+	if (toRemove()) return;
 	ofSetColor(colour);
 	ofPushMatrix();
 	ofTranslate(xr, yr, 0);

@@ -3,6 +3,7 @@
 
 #include "../Entity/Camera/Camera.h"
 #include "../Entity/Entity.h"
+#include "../Player/Player.h"
 #include "../Projectile/Projectile.h"
 #include "../Particles/ParticleEmitter.h"
 
@@ -15,6 +16,8 @@ private:
 
 public:
 
+	Player* player;
+
 	std::vector<Entity*>* entityList = new std::vector<Entity*>;
 	std::vector<Projectile*>* projectileList = new std::vector<Projectile*>;
 	std::vector<ParticleEmitter*>* emitterList = new std::vector<ParticleEmitter*>;
@@ -25,6 +28,7 @@ public:
 	void update();
 	void draw();
 
+	void addPlayer(Player* p);
 	void addEntity(Entity* e);
 	void addProjectile(Projectile* p);
 	void addEmitter(ParticleEmitter* e);
