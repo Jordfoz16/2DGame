@@ -8,7 +8,7 @@ void Level::init(Screen &screen, int width, int height) {
 }
 
 void Level::generateLevel() {
-	for (int i = 0; i < 20; i++) {
+	for (int i = 0; i < 300; i++) {
 		spawnAsteroid();
 	}
 
@@ -83,6 +83,7 @@ void Level::collision() {
 	//Asteroid Collision
 	std::vector<Entity*>* entityList = screen->getEntityList();
 	for (int i = 0; i < entityList->size() - 1; i++) {
+		if (entityList->size() == 0) return;
 		for (int j = i + 1; j < entityList->size(); j++) {
 			Entity* entityA = entityList->at(i);
 			Entity* entityB = entityList->at(j);
@@ -151,6 +152,7 @@ void Level::collision() {
 
 	//Player and Asteroid Collision
 	if (player->toRemove()) return;
+	if (!player->isCollidable()) return;
 	score += 1;
 	for (int i = 0; i < entityList->size(); i++) {
 		float xDist = entityList->at(i)->getXa() - player->getXa();

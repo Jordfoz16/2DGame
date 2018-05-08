@@ -16,7 +16,6 @@ void GUI::init(Level &level) {
 
 void GUI::update() {
 	if (mode == game) {
-		std::cout << level->endGame << std::endl;
 		if (level->endGame) {
 			mode = finished;
 		}

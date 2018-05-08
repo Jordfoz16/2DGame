@@ -10,6 +10,7 @@ void Player::init(Keyboard* keys) {
 	friction = 0.98;
 	maxSpeed = 5;
 	coolDown = coolDown * 60;
+	collidable = false;
 }
 
 void Player::update(float xOffset, float yOffset) {

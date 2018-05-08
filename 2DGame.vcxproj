@@ -171,6 +171,7 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Level\Background\Background.cpp" />
     <ClCompile Include="src\Screen\GUI\Button.cpp" />
     <ClCompile Include="src\Screen\GUI\GUI.cpp" />
     <ClCompile Include="src\Particles\ParticleEmitter.cpp" />
@@ -186,8 +187,10 @@
     <ClCompile Include="src\Entity\Camera\Camera.cpp" />
     <ClCompile Include="src\Screen\Screen.cpp" />
     <ClCompile Include="src\Sprite\Sprite.cpp" />
+    <ClCompile Include="src\Level\Background\Star\Star.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Level\Background\Background.h" />
     <ClInclude Include="src\Screen\GUI\Button.h" />
     <ClInclude Include="src\Screen\GUI\GUI.h" />
     <ClInclude Include="src\Particles\ParticleEmitter.h" />
@@ -202,6 +205,7 @@
     <ClInclude Include="src\Entity\Camera\Camera.h" />
     <ClInclude Include="src\Screen\Screen.h" />
     <ClInclude Include="src\Sprite\Sprite.h" />
+    <ClInclude Include="src\Level\Background\Star\Star.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">

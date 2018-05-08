@@ -6,9 +6,12 @@
 #include "../Player/Player.h"
 #include "../Projectile/Projectile.h"
 #include "../Particles/ParticleEmitter.h"
+#include "../Level/Background/Background.h"
 
 class Screen{
 private:
+
+	Background* background;
 
 	int levelWidth, levelHeight;
 	int drawSizeEntity = 0;

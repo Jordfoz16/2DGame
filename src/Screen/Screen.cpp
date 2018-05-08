@@ -8,6 +8,8 @@ void Screen::init(int levelWidth, int levelHeight){
 	camera->setLevel(levelWidth, levelHeight);
 	camera->setFriction(0.9);
 	camera->setWrapping(false);
+
+	background = new Background(levelWidth, levelHeight);
 }
 
 void Screen::update() {
@@ -54,6 +56,9 @@ void Screen::draw() {
 
 	ofSetColor(0);
 	ofDrawRectangle(0 - camera->getXOffset(), 0 - camera->getYOffset(), levelWidth, levelHeight);
+
+	ofSetColor(255);
+	background->draw(camera->getXOffset(), camera->getYOffset());
 
 	for (int i = 0; i < entityList->size(); i++) {
 		Entity* e = entityList->at(i);

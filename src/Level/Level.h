@@ -8,7 +8,6 @@
 #include "../Projectile/Projectile.h"
 #include "../Particles/ParticleEmitter.h"
 
-
 class Level {
 private:
 	Screen* screen;

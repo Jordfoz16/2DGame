@@ -15,7 +15,7 @@ private:
 
 	bool gameModeSetup = false;
 
-	int LEVEL_WIDTH = 1200, LEVEL_HEIGHT = LEVEL_WIDTH;
+	int LEVEL_WIDTH = 5000, LEVEL_HEIGHT = LEVEL_WIDTH;
 
 	float delta = 0.0f, timer = 0.0f;
 	int frames = 0;
