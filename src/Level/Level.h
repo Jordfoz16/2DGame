@@ -13,12 +13,14 @@ class Level {
 private:
 	Screen* screen;
 	int width, height;
-
 	int coolDown = 0;
-
+	
 	void calcCollision(Entity* e1, Entity* e2);
 
 public:
+
+	int score = 0, killCount = 0;
+	bool endGame = false;
 
 	Player* player;
 

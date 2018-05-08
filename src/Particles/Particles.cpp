@@ -2,7 +2,7 @@
 
 
 
-Particles::Particles() {
+Particles::Particles(ofColor colour) {
 	xPos = 0;
 	yPos = 0;
 	velX = (float)((rand() % 1000) - 500) / 100;
@@ -10,10 +10,7 @@ Particles::Particles() {
 	size = (rand() % 5) + 1;
 	lifeTime = (rand() % 20) + 5;
 	lifeCounter = 0;
-}
-
-
-Particles::~Particles() {
+	this->colour = colour;
 }
 
 void Particles::update() {
@@ -24,7 +21,7 @@ void Particles::update() {
 }
 
 void Particles::draw(float xr, float yr) {
-	ofSetColor(195, 195, 195);
+	ofSetColor(colour);
 	ofDrawRectangle(xr + xPos, yr + yPos, size, size);
 }
 

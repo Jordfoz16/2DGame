@@ -28,9 +28,6 @@
     <ClCompile Include="src\Projectile\Projectile.cpp" />
     <ClCompile Include="src\Particles\Particles.cpp" />
     <ClCompile Include="src\Particles\ParticleEmitter.cpp" />
-    <ClCompile Include="src\Entity\Box\Box.cpp">
-      <Filter>src\Entity\Box</Filter>
-    </ClCompile>
     <ClCompile Include="src\Entity\Player\Player.cpp" />
     <ClCompile Include="src\Entity\Asteroid\Asteroid.cpp">
       <Filter>src\Entity\Asteroid</Filter>
@@ -41,6 +38,8 @@
     <ClCompile Include="src\Entity\Camera\Camera.cpp">
       <Filter>src\Entity\Camera</Filter>
     </ClCompile>
+    <ClCompile Include="src\Screen\GUI\GUI.cpp" />
+    <ClCompile Include="src\Screen\GUI\Button.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -93,9 +92,6 @@
     <ClInclude Include="src\Projectile\Projectile.h" />
     <ClInclude Include="src\Particles\Particles.h" />
     <ClInclude Include="src\Particles\ParticleEmitter.h" />
-    <ClInclude Include="src\Entity\Box\Box.h">
-      <Filter>src\Entity\Box</Filter>
-    </ClInclude>
     <ClInclude Include="src\Entity\Player\Player.h" />
     <ClInclude Include="src\Entity\Asteroid\Asteroid.h">
       <Filter>src\Entity\Asteroid</Filter>
@@ -106,6 +102,8 @@
     <ClInclude Include="src\Entity\Camera\Camera.h">
       <Filter>src\Entity\Camera</Filter>
     </ClInclude>
+    <ClInclude Include="src\Screen\GUI\GUI.h" />
+    <ClInclude Include="src\Screen\GUI\Button.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

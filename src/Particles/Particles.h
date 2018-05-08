@@ -13,10 +13,10 @@ private:
 	float size;
 	bool removed = false;
 	int lifeTime, lifeCounter;
+	ofColor colour;
 
 public:
-	Particles();
-	~Particles();
+	Particles(ofColor colour);
 
 	void update();
 	void draw(float xr, float yr);

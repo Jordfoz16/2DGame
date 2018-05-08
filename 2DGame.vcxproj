@@ -171,6 +171,8 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Screen\GUI\Button.cpp" />
+    <ClCompile Include="src\Screen\GUI\GUI.cpp" />
     <ClCompile Include="src\Particles\ParticleEmitter.cpp" />
     <ClCompile Include="src\Particles\Particles.cpp" />
     <ClCompile Include="src\Projectile\Projectile.cpp" />
@@ -178,7 +180,6 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\Entity\Asteroid\Asteroid.cpp" />
-    <ClCompile Include="src\Entity\Box\Box.cpp" />
     <ClCompile Include="src\Entity\Entity.cpp" />
     <ClCompile Include="src\Input\Keyboard.cpp" />
     <ClCompile Include="src\Level\Level.cpp" />
@@ -187,13 +188,14 @@
     <ClCompile Include="src\Sprite\Sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Screen\GUI\Button.h" />
+    <ClInclude Include="src\Screen\GUI\GUI.h" />
     <ClInclude Include="src\Particles\ParticleEmitter.h" />
     <ClInclude Include="src\Particles\Particles.h" />
     <ClInclude Include="src\Projectile\Projectile.h" />
     <ClInclude Include="src\Entity\Player\Player.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\Entity\Asteroid\Asteroid.h" />
-    <ClInclude Include="src\Entity\Box\Box.h" />
     <ClInclude Include="src\Entity\Entity.h" />
     <ClInclude Include="src\Input\Keyboard.h" />
     <ClInclude Include="src\Level\Level.h" />

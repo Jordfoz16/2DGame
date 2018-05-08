@@ -55,13 +55,11 @@ void Screen::draw() {
 	ofSetColor(0);
 	ofDrawRectangle(0 - camera->getXOffset(), 0 - camera->getYOffset(), levelWidth, levelHeight);
 
-	player->draw();
-
 	for (int i = 0; i < entityList->size(); i++) {
 		Entity* e = entityList->at(i);
 
-		if (e->getXr() + e->getWidth() >= 0 && e->getXr() <= ofGetWindowWidth() + 50) {
-			if (e->getYr() + e->getHeight() >= 0 && e->getYr() <= ofGetWindowHeight() + 50) {
+		if (e->getXr() + e->getWidth() >= 0 && e->getXr() <= ofGetWindowWidth() + 100) {
+			if (e->getYr() + e->getHeight() >= 0 && e->getYr() <= ofGetWindowHeight() + 100) {
 				entityList->at(i)->draw();
 				drawSizeEntity++;
 			}
@@ -82,6 +80,8 @@ void Screen::draw() {
 	for (int i = 0; i < emitterList->size(); i++) {
 		emitterList->at(i)->draw();
 	}
+
+	player->draw();
 }
 
 void Screen::addPlayer(Player* p) {

@@ -4,6 +4,7 @@ void Level::init(Screen &screen, int width, int height) {
 	this->screen = &screen;
 	this->width = width;
 	this->height = height;
+	generateLevel();
 }
 
 void Level::generateLevel() {
@@ -14,6 +15,7 @@ void Level::generateLevel() {
 	player = new Player();
 	player->setSize(50);
 	player->setPosition(100, 100);
+	player->setLevel(width, height);
 	screen->addPlayer(player);
 }
 
@@ -115,6 +117,10 @@ void Level::collision() {
 			if (distance <  (e1->getWidth() / 2)) {
 				p1->remove();
 				e1->remove();
+
+				score += e1->getWidth();
+				killCount++;
+
 				screen->addEmitter(new ParticleEmitter(e1->getXa(), e1->getYa(), 200));
 				
 				if (e1->getWidth() / 2 < 50) continue;
@@ -144,13 +150,17 @@ void Level::collision() {
 	}
 
 	//Player and Asteroid Collision
+	if (player->toRemove()) return;
+	score += 1;
 	for (int i = 0; i < entityList->size(); i++) {
 		float xDist = entityList->at(i)->getXa() - player->getXa();
 		float yDist = entityList->at(i)->getYa() - player->getYa();
 		float distance = sqrtf((xDist * xDist) + (yDist * yDist));
 
-		if (distance < (entityList->at(i)->getWidth() - player->getWidth()) / 2) {
+		if (distance < (entityList->at(i)->getWidth() + player->getWidth() - 10) / 2) {
+			screen->addEmitter(new ParticleEmitter(ofColor(244, 209, 66), player->getXa(), player->getYa(), 200));
 			player->remove();
+			endGame = true;
 		}
 	}
 }

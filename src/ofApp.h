@@ -5,12 +5,15 @@
 #include "ofUtils.h"
 #include "Input/Keyboard.h"
 #include "Screen/Screen.h"
+#include "Screen/GUI/GUI.h"
 #include "Level/Level.h"
 
 class ofApp : public ofBaseApp{
 private:
 
 	std::stringstream ss;
+
+	bool gameModeSetup = false;
 
 	int LEVEL_WIDTH = 1200, LEVEL_HEIGHT = LEVEL_WIDTH;
 
@@ -21,6 +24,7 @@ public:
 
 	Keyboard keyboard;
 	Screen screen;
+	GUI gui;
 	Level level;
 
 	void setup();
