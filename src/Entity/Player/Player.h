@@ -12,7 +12,7 @@ private:
 	float thrusterSpeed = 0.1;
 	float rotationSpeed = 5;
 	
-	float coolDown = 0.5;
+	float coolDown = 0.25;
 
 public:
 

@@ -18,6 +18,10 @@ void ofApp::update(){
 		gameModeSetup = true;
 	}
 
+	if (gui.mode == finished) {
+		gameModeSetup = false;
+	}
+
 	if (gui.mode == game) {
 		delta = ofGetElapsedTimef();
 		timer += delta;

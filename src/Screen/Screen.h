@@ -6,6 +6,7 @@
 #include "../Player/Player.h"
 #include "../Projectile/Projectile.h"
 #include "../Particles/ParticleEmitter.h"
+#include "../Level/Background/Background.h"
 
 class Screen{
 private:
@@ -14,15 +15,17 @@ private:
 	int drawSizeEntity = 0;
 	int drawSizeProjectile = 0;
 
+	bool firstLoad = true;
+
 public:
 
 	Player* player;
+	Camera* camera;
+	Background* background;
 
 	std::vector<Entity*>* entityList = new std::vector<Entity*>;
 	std::vector<Projectile*>* projectileList = new std::vector<Projectile*>;
 	std::vector<ParticleEmitter*>* emitterList = new std::vector<ParticleEmitter*>;
-
-	Camera* camera;
 
 	void init(int levelWidth, int levelHeight);
 	void update();

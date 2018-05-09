@@ -8,7 +8,6 @@
 #include "../Projectile/Projectile.h"
 #include "../Particles/ParticleEmitter.h"
 
-
 class Level {
 private:
 	Screen* screen;
@@ -29,4 +28,5 @@ public:
 	void spawnAsteroid();
 	void update();
 	void collision();
+	void destroyLevel();
 };

@@ -9,7 +9,8 @@ void Player::init(Keyboard* keys) {
 	playerSprite->setScale(0.2);
 	friction = 0.98;
 	maxSpeed = 5;
-	coolDown = coolDown * 60;
+	coolDown = coolDown * 0;
+	collidable = true;
 }
 
 void Player::update(float xOffset, float yOffset) {
@@ -32,7 +33,6 @@ void Player::update(float xOffset, float yOffset) {
 	
 	if (keys->LEFT) rot += -1 * rotationSpeed;
 	if (keys->RIGHT) rot += 1 * rotationSpeed;
-
 	
 	setSpeed(thruster, rot);
 

@@ -40,6 +40,8 @@
     </ClCompile>
     <ClCompile Include="src\Screen\GUI\GUI.cpp" />
     <ClCompile Include="src\Screen\GUI\Button.cpp" />
+    <ClCompile Include="src\Level\Background\Background.cpp" />
+    <ClCompile Include="src\Level\Background\Star\Star.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -104,6 +106,8 @@
     </ClInclude>
     <ClInclude Include="src\Screen\GUI\GUI.h" />
     <ClInclude Include="src\Screen\GUI\Button.h" />
+    <ClInclude Include="src\Level\Background\Background.h" />
+    <ClInclude Include="src\Level\Background\Star\Star.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

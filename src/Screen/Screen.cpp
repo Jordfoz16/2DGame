@@ -1,20 +1,32 @@
 #include "Screen.h"
 
-void Screen::init(int levelWidth, int levelHeight){
+void Screen::init(int levelWidth, int levelHeight) {
 	this->levelWidth = levelWidth;
 	this->levelHeight = levelHeight;
-	
+
 	camera = new Camera;
 	camera->setLevel(levelWidth, levelHeight);
 	camera->setFriction(0.9);
 	camera->setWrapping(false);
+
+	if (firstLoad) {
+		background = new Background(levelWidth, levelHeight);
+	}
+	
+	firstLoad = false;
 }
 
 void Screen::update() {
 
 	camera->update();
-	player->update(camera->getXOffset(), camera->getYOffset());
-
+	
+	if (player->toRemove()) {
+		delete player;
+	}
+	else {
+		player->update(camera->getXOffset(), camera->getYOffset());
+	}
+	
 	for (int i = 0; i < projectileList->size(); i++) {
 		if (projectileList->at(i)->toRemove()) {
 			delete projectileList->at(i);
@@ -54,6 +66,9 @@ void Screen::draw() {
 
 	ofSetColor(0);
 	ofDrawRectangle(0 - camera->getXOffset(), 0 - camera->getYOffset(), levelWidth, levelHeight);
+
+	ofSetColor(255);
+	background->draw(camera->getXOffset(), camera->getYOffset());
 
 	for (int i = 0; i < entityList->size(); i++) {
 		Entity* e = entityList->at(i);
