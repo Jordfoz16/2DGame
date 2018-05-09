@@ -43,7 +43,7 @@ public:
 	virtual void update(float xOffset, float yOffset);
 	virtual void draw();
 	virtual void move();
-	void remove();
+	virtual void remove();
 
 	void setPosition(float xa, float ya);
 	void setVelocity(float velX, float velY);

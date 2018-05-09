@@ -16,7 +16,6 @@ void Sprite::loadSprite(std::string path) {
 	sprite.load(path);
 	width = sprite.getWidth();
 	height = sprite.getHeight();
-
 	std::cout << "Sprite Loaded" << std::endl;
 }
 

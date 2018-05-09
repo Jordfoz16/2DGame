@@ -28,4 +28,5 @@ public:
 	void spawnAsteroid();
 	void update();
 	void collision();
+	void destroyLevel();
 };

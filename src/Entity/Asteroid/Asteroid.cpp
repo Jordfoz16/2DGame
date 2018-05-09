@@ -42,3 +42,8 @@ void Asteroid::draw() {
 	asteroidSprite->draw(0 - width/2, 0 - height/2);
 	ofPopMatrix();
 }
+
+void Asteroid::remove() {
+	removed = true;
+	asteroidSprite->sprite.clear();
+}

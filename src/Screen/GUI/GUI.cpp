@@ -21,6 +21,14 @@ void GUI::update() {
 		}
 	}
 
+	if (mode == finished) {
+		if (restartButton.getPressed()) {
+			restartButton.reset();
+			mode = start;
+			ended = false;
+		}
+	}
+
 	if (startButton.getPressed()) {
 		mode = game;
 		startButton.reset();
@@ -28,9 +36,21 @@ void GUI::update() {
 }
 
 void GUI::mouseUpdate(int mouseX, int mouseY, int mouseB) {
-	startButton.update(mouseX, mouseY, mouseB);
-	infoButton.update(mouseX, mouseY, mouseB);
-	restartButton.update(mouseX, mouseY, mouseB);
+	
+	switch (mode)
+	{
+	case start:
+		startButton.update(mouseX, mouseY, mouseB);
+		infoButton.update(mouseX, mouseY, mouseB);
+		break;
+	case game:
+		break;
+	case finished:
+		restartButton.update(mouseX, mouseY, mouseB);
+		break;
+	default:
+		break;
+	}
 }
 
 void GUI::draw() {
@@ -76,6 +96,11 @@ void GUI::gameInterface() {
 
 void GUI::endMenu() {
 
+	if (ended == false) {
+		level->destroyLevel();
+		ended = true;
+	}
+	
 	std::stringstream ss;
 
 	ss << "Game Over";
@@ -87,6 +112,6 @@ void GUI::endMenu() {
 	ss << "Kill Count: " << level->killCount;
 
 	bodyFont.drawString(ss.str(), (ofGetWindowWidth() / 2) - 130, (ofGetWindowHeight() / 2));
-	
+
 	restartButton.draw();
 }

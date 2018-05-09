@@ -5,8 +5,8 @@ Star::Star(int xa, int ya){
 	this->xa = xa;
 	this->ya = ya;
 
-	starSprite = new Sprite("sprites/Star1.png");
-	starSprite->setScale(0.05);
+	starSprite = new Sprite("sprites/Star.png");
+	starSprite->setScale(0.8);
 }
 
 void Star::draw() {

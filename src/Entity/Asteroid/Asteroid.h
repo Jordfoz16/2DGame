@@ -22,4 +22,6 @@ public:
 	void init();
 	void update(float xOffset, float yOffset);
 	void draw();
+
+	void remove();
 };

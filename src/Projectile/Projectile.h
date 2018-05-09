@@ -20,5 +20,7 @@ public:
 	void move();
 
 	float getLength();
+
+	void remove();
 };
 

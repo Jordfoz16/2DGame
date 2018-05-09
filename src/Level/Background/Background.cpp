@@ -16,8 +16,8 @@ void Background::draw(int xOffset, int yOffset) {
 
 		star->update(xOffset, yOffset);
 		
-		if (star->xr >= 0 && star->xr <= ofGetWindowWidth() + 20) {
-			if (star->yr >= 0 && star->yr <= ofGetWindowHeight() + 20) {
+		if (star->xr >= -20 && star->xr <= ofGetWindowWidth() + 20) {
+			if (star->yr >= -20 && star->yr <= ofGetWindowHeight() + 20) {
 				star->draw();
 			}
 		}

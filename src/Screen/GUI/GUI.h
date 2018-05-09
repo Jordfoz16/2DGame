@@ -20,6 +20,8 @@ private:
 
 	Level* level;
 
+	bool ended = false;
+
 public:
 
 	gameMode mode;

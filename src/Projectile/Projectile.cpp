@@ -42,3 +42,7 @@ void Projectile::draw() {
 float Projectile::getLength() {
 	return length;
 }
+
+void Projectile::remove() {
+	removed = true;
+}
