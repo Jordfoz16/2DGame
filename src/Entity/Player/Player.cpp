@@ -5,24 +5,36 @@ void Player::init(Keyboard* keys) {
 	std::cout << "Player Created" << std::endl;
 	this->keys = keys;
 
-	playerSprite = new Sprite("sprites/rocket.png");
-	playerSprite->setScale(0.2);
+	idleSprite = new Sprite("sprites/rocket_no.png");
+	thrustSprite = new Sprite("sprites/rocket.png");
+	playerSprite = idleSprite;
+	idleSprite->setScale(0.3);
+	thrustSprite->setScale(0.3);
 	friction = 0.98;
 	maxSpeed = 5;
-	coolDown = coolDown * 0;
-	collidable = true;
+	coolDown = coolDown * 60;
+	collidable = false;
 }
 
 void Player::update(float xOffset, float yOffset) {
 	
+	if (invincibleCounter < 300) {
+		invincibleCounter++;
+	}
+	else {
+		collidable = true;
+	}
+
 	xr = xa - xOffset;
 	yr = ya - yOffset;
 
 	if (keys->UP) {
 		thruster += thrusterSpeed;
 		if (thruster > maxSpeed) thruster = maxSpeed;
+		playerSprite = thrustSprite;
 	}
 	else {
+		playerSprite = idleSprite;
 		if (thruster > 0) {
 			thruster *= friction;
 		}

@@ -20,7 +20,10 @@ private:
 
 	Level* level;
 
+	std::stringstream ss;
+
 	bool ended = false;
+	bool showInfo = false;
 
 public:
 

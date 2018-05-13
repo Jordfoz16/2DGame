@@ -38,7 +38,6 @@ Entity::Entity(float posX, float posY, float width, float height, float rot) :
 }
 
 Entity::~Entity() {
-	std::cout << "Entity Destroyed" << std::endl;
 }
 
 void Entity::init() {

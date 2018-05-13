@@ -32,6 +32,14 @@ void GUI::update() {
 	if (startButton.getPressed()) {
 		mode = game;
 		startButton.reset();
+		showInfo = false;
+	}
+
+	if (infoButton.getPressed()) {
+		if (showInfo == true) showInfo = false;
+		else showInfo = true;
+		
+		infoButton.reset();
 	}
 }
 
@@ -75,15 +83,29 @@ void GUI::startMenu() {
 	ofBackground(0);
 	titleFont.drawString("Asteroids", (ofGetWindowWidth() / 2) - 130, (ofGetWindowHeight() / 2) - 200);
 	
+	if (showInfo) {
+		ss.str("");
+		ss << "Controls:" << std::endl;
+		ss << "W = Thrust" << std::endl;
+		ss << "A = Turn Left" << std::endl;
+		ss << "D = Turn Right" << std::endl;
+		ss << "Space = Fire Projectile" << std::endl;
+		bodyFont.drawString(ss.str(), 200, 160);
+		ss.str("");
+		ss << "It get points shot the asteroids" << std::endl;
+		ss << "and stay alive for as long as you can" << std::endl;
+		bodyFont.drawString(ss.str(), 180, 320);
+		
+	}
+	
 	startButton.draw();
 	infoButton.draw();
 }
 
 void GUI::gameInterface() {
 	ofSetColor(255);
-
-	std::stringstream ss;
 	
+	ss.str("");
 	ss << "Score: " << level->score;
 
 	bodyFont.drawString(ss.str(), 10, 25);
@@ -92,6 +114,15 @@ void GUI::gameInterface() {
 	ss << "Kill Count: " << level->killCount;
 
 	bodyFont.drawString(ss.str(), 10, 55);
+
+	int startTimer = 5 - (level->player->invincibleCounter/60);
+
+	if (startTimer == 0) return;
+
+	ss.str("");
+	ss << "Starting in " << startTimer;
+
+	bodyFont.drawString(ss.str(), (ofGetWindowWidth()/2) - 75, (ofGetWindowHeight()/2) - 100);
 }
 
 void GUI::endMenu() {

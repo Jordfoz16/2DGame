@@ -2,7 +2,7 @@
 
 void Asteroid::init() {
 
-	std::cout << "Asteroid Created" << std::endl;
+	//std::cout << "Asteroid Created" << std::endl;
 
 	int random = rand() % 2;
 	switch (random)
@@ -35,6 +35,7 @@ void Asteroid::update(float xOffset, float yOffset) {
 }
 
 void Asteroid::draw() {
+	if (asteroidSprite->remove) return;
 	ofSetColor(colour);
 	ofPushMatrix();
 	ofTranslate(xr, yr, 0);
@@ -46,4 +47,5 @@ void Asteroid::draw() {
 void Asteroid::remove() {
 	removed = true;
 	asteroidSprite->sprite.clear();
+	asteroidSprite->remove = true;
 }
