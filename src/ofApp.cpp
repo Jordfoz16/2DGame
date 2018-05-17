@@ -10,6 +10,7 @@ void ofApp::update(){
 
 	gui.update();
 
+	//Checks if the game has been setup for the first time
 	if (gameModeSetup == false && gui.mode == game) {
 		screen.init(LEVEL_WIDTH, LEVEL_HEIGHT);
 		level.init(screen, LEVEL_WIDTH, LEVEL_HEIGHT);
@@ -18,10 +19,12 @@ void ofApp::update(){
 		gameModeSetup = true;
 	}
 
+	//Resets the game to first time start up
 	if (gui.mode == finished) {
 		gameModeSetup = false;
 	}
 
+	//Starts the FPS counter and starts the update cycle
 	if (gui.mode == game) {
 		delta = ofGetElapsedTimef();
 		timer += delta;
@@ -54,12 +57,14 @@ void ofApp::update(){
 }
 
 void ofApp::draw(){
+	//Draws the screen and adds a background 
 	if (gui.mode == game) {
 		ofBackground(255, 0, 238);
 		screen.draw();
 		frames++;
 	}
 	
+	//Drawns the GUI
 	gui.draw();
 }
 

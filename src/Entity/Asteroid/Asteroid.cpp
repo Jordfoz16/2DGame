@@ -2,7 +2,7 @@
 
 void Asteroid::init() {
 
-	//std::cout << "Asteroid Created" << std::endl;
+	//Randomly selectes an asteroid sprite
 
 	int random = rand() % 2;
 	switch (random)
@@ -17,10 +17,13 @@ void Asteroid::init() {
 		break;
 	}
 
+	//Random rotation speed
 	rotationSpeed = ((float)(rand() % 300) - 100) / 100.0f;
 	mass = (width * width);
 	maxSpeed = 1.5;
+	//Stops asteroids from being wrapped
 	wrapping = false;
+	//Makes asteroids collidable
 	collidable = true;
 }
 
@@ -28,6 +31,7 @@ void Asteroid::update(float xOffset, float yOffset) {
 	xr = xa - xOffset;
 	yr = ya - yOffset;
 
+	//Removes the asteroid if they are too small
 	if (width < 50) remove();
 
 	setRotation(rot += rotationSpeed);
@@ -46,6 +50,7 @@ void Asteroid::draw() {
 
 void Asteroid::remove() {
 	removed = true;
+	//Removes sprite
 	asteroidSprite->sprite.clear();
 	asteroidSprite->remove = true;
 }

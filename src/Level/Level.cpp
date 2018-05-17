@@ -11,10 +11,12 @@ void Level::init(Screen &screen, int width, int height) {
 }
 
 void Level::generateLevel() {
-	for (int i = 0; i < 300; i++) {
+	//Adds asteroids to the level
+	for (int i = 0; i < 400; i++) {
 		spawnAsteroid();
 	}
 
+	//Adds a player to the level
 	player = new Player();
 	player->setSize(50);
 	player->setPosition(100, 100);
@@ -23,7 +25,12 @@ void Level::generateLevel() {
 }
 
 void Level::spawnAsteroid() {
-	
+
+	/*
+	This method puts the asteroids in a space where they are not touching other asteroids.
+	If it cant find a free space in 20 attemps they it doesnt spawn that asteroids.
+	*/
+
 	bool freeSpace = false;
 	
 	float x, y;
@@ -67,11 +74,15 @@ void Level::spawnAsteroid() {
 }
 
 void Level::update() {
+	//Updates the camera position to follow the player
 	screen->camera->setPosition(player->getXa() - (ofGetWindowWidth() / 2), player->getYa() - (ofGetWindowHeight() / 2));
+	
+	//Checks for collision between objects
 	collision();
 
 	coolDown++;
 
+	//Creates a cooldown timer for projectiles
 	if (coolDown >= player->getCoolDown()) {
 		if (player->keys->SPACE) {
 			Projectile* p = new Projectile(player->getXa(), player->getYa() - 3, player->getRotation());
@@ -83,7 +94,7 @@ void Level::update() {
 
 void Level::collision() {
 
-	//Asteroid Collision
+	//Asteroid and Asteroid Collision
 	std::vector<Entity*>* entityList = screen->getEntityList();
 	for (int i = 0; i < entityList->size() - 1; i++) {
 		if (entityList->size() == 0) return;
@@ -125,8 +136,12 @@ void Level::collision() {
 				score += e1->getWidth();
 				killCount++;
 
+				//Creates an emitter to show the the asteroid is destroyed 
+
 				screen->addEmitter(new ParticleEmitter(e1->getXa(), e1->getYa(), 200));
 				
+				//Creates two new asteroids of the original one is large enough
+
 				if (e1->getWidth() / 2 < 50) continue;
 
 				Asteroid* a1 = new Asteroid(e1->getXa() + e1->getWidth() / 4, e1->getYa() + e1->getWidth() / 4, e1->getWidth() / 2, e1->getHeight() / 2);
@@ -163,6 +178,7 @@ void Level::collision() {
 		float distance = sqrtf((xDist * xDist) + (yDist * yDist));
 
 		if (distance < (entityList->at(i)->getWidth() + player->getWidth() - 10) / 2) {
+			//Ends the game if the player is hit
 			screen->addEmitter(new ParticleEmitter(ofColor(244, 209, 66), player->getXa(), player->getYa(), 200));
 			player->remove();
 			endGame = true;
@@ -171,6 +187,11 @@ void Level::collision() {
 }
 
 void Level::calcCollision(Entity* e1, Entity* e2) {
+
+	/*
+		Calculates the new velocities for the asteroids after they have hit each other.
+		It then moves them once to try and prevent them getting suck inside each other.
+	*/
 
 	float xVel1 = (e1->getVelX() * (e1->getMass() - e2->getMass()) + (2 * e2->getMass() * e2->getVelX())) / (e1->getMass() + e2->getMass());
 	float yVel1 = (e1->getVelY() * (e1->getMass() - e2->getMass()) + (2 * e2->getMass() * e2->getVelY())) / (e1->getMass() + e2->getMass());
@@ -186,6 +207,7 @@ void Level::calcCollision(Entity* e1, Entity* e2) {
 }
 
 void Level::destroyLevel() {
+	//Sets all entities to be removed to reset the level.
 	std::vector<Entity*>* entityList = screen->getEntityList();
 	
 	for (int i = 0; i < entityList->size(); i++) {

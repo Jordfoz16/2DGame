@@ -13,22 +13,6 @@ void Camera::update() {
 
 	float camX = 0, camY = 0;
 
-	/*if (keys->UP) camY = -camSpeed;
-	if (keys->DOWN) camY = camSpeed;
-	if (keys->LEFT) camX = -camSpeed;
-	if (keys->RIGHT) camX = camSpeed;
-	
-	if (camX == 0 && camY == 0) {
-		camX = velX;
-		camY = velY;
-	}
-	else if (camX == 0) {
-		camX = velX;
-	}
-	else if (camY == 0) {
-		camY = velY;
-	}*/
-
 	setVelocity(camX, camY);
 
 	move();

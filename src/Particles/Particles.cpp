@@ -1,8 +1,7 @@
 #include "Particles.h"
 
-
-
 Particles::Particles(ofColor colour) {
+	//Gives them a random velocity and life time
 	xPos = 0;
 	yPos = 0;
 	velX = (float)((rand() % 1000) - 500) / 100;
@@ -14,6 +13,8 @@ Particles::Particles(ofColor colour) {
 }
 
 void Particles::update() {
+
+	//Checks if they have passed there life time and removes them if they have
 	lifeCounter++;
 	if (lifeCounter > lifeTime) remove();
 

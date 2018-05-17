@@ -1,14 +1,17 @@
 #include "Screen.h"
 
 void Screen::init(int levelWidth, int levelHeight) {
+	//Sets the size of the level
 	this->levelWidth = levelWidth;
 	this->levelHeight = levelHeight;
 
+	//Creates a new camera
 	camera = new Camera;
 	camera->setLevel(levelWidth, levelHeight);
 	camera->setFriction(0.9);
 	camera->setWrapping(false);
 
+	//Loads the background once
 	if (firstLoad) {
 		background = new Background(levelWidth, levelHeight);
 	}
@@ -18,15 +21,18 @@ void Screen::init(int levelWidth, int levelHeight) {
 
 void Screen::update() {
 
+	//Updates the cameras position
 	camera->update();
 	
+	//Removes the player else updates its position
 	if (player->toRemove()) {
 		delete player;
 	}
 	else {
 		player->update(camera->getXOffset(), camera->getYOffset());
 	}
-	
+
+	//Removes projectiles else updates there positions
 	for (int i = 0; i < projectileList->size(); i++) {
 		if (projectileList->at(i)->toRemove()) {
 			delete projectileList->at(i);
@@ -38,6 +44,7 @@ void Screen::update() {
 		projectileList->at(i)->update(camera->getXOffset(), camera->getYOffset());
 	}
 
+	//Removes entities else updates there positions
 	for (int i = 0; i < entityList->size(); i++) {
 		if (entityList->at(i)->toRemove()) {
 			delete entityList->at(i);
@@ -48,6 +55,7 @@ void Screen::update() {
 		entityList->at(i)->update(camera->getXOffset(), camera->getYOffset());
 	}
 
+	//Removes particle emitters else updates there positions
 	for (int i = 0; i < emitterList->size(); i++) {
 		if (emitterList->at(i)->getSize() == 0) {
 			delete emitterList->at(i);
@@ -67,9 +75,11 @@ void Screen::draw() {
 	ofSetColor(0);
 	ofDrawRectangle(0 - camera->getXOffset(), 0 - camera->getYOffset(), levelWidth, levelHeight);
 
+	//Draws the background
 	ofSetColor(255);
 	background->draw(camera->getXOffset(), camera->getYOffset());
 
+	//Draws all of the entites
 	for (int i = 0; i < entityList->size(); i++) {
 		Entity* e = entityList->at(i);
 
@@ -81,6 +91,7 @@ void Screen::draw() {
 		}
 	}
 
+	//Draws all of the projectiles
 	for (int i = 0; i < projectileList->size(); i++) {
 		Projectile* p = projectileList->at(i);
 
@@ -92,10 +103,12 @@ void Screen::draw() {
 		}
 	}
 
+	//Draws all of the particle emitters
 	for (int i = 0; i < emitterList->size(); i++) {
 		emitterList->at(i)->draw();
 	}
 
+	//Draws the player
 	player->draw();
 }
 

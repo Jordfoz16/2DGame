@@ -2,6 +2,7 @@
 
 Background::Background(int width, int height)
 {
+	//Randomly created stars in the background of the level
 	for (int i = 0; i < 500; i++) {
 		int randX = rand() % width;
 		int randY = rand() % height;
