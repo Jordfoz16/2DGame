@@ -1,5 +1,12 @@
 #include "Keyboard.h"
 
+/*
+	Checks if a key as been pressed.
+	If it has then it changes a value in an array of booleans
+	with the index of the keycode.
+	Allows for multiple key presses
+*/
+
 void Keyboard::update() {
 	UP = activeKeys[KEY_W];
 	DOWN = activeKeys[KEY_S];

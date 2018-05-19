@@ -8,8 +8,8 @@ private:
 	
 	float length;
 
-	float speed = 10;
-	float lifeTime = 5;
+	float speed = 9;
+	float lifeTime = 1;
 	int counter = 0;
 
 public:

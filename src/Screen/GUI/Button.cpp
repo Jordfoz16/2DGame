@@ -21,6 +21,7 @@ Button::Button(std::string text, int x, int y){
 
 void Button::draw() {
 	
+	//Changes the colour of the button depending if its been clicked or rolled over
 	if (pressed) {
 		ofSetColor(150, 50, 50);
 	}else if (rollover){
@@ -32,10 +33,12 @@ void Button::draw() {
 	ofDrawRectangle(x, y, width, height);
 
 	ofSetColor(255);
-	buttonFont.drawString(text, x + 38, y + 45);
+	//Centers the text
+	buttonFont.drawString(text, x + (width/2) - (buttonFont.stringWidth(text)/2), y + (height/2) + (buttonFont.stringHeight(text)/2));
 }
 
 void Button::update(int mouseX, int mouseY, int mouseB) {
+	//Checks for roll over and clicks
 	if (mouseX > x && mouseX < x + width) {
 		if (mouseY > y && mouseY < y + height) {
 			rollover = true;

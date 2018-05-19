@@ -12,6 +12,8 @@ public:
 	ofImage sprite;
 	int width, height;
 
+	bool remove = false;
+
 	Sprite();
 	Sprite(std::string path);
 	Sprite(std::string path, float size);

@@ -5,6 +5,7 @@ ParticleEmitter::ParticleEmitter(float xa, float ya, int amount){
 	this->xa = xa;
 	this->ya = ya;
 
+	//Creates a certain amount of particles
 	for (int i = 0; i < amount; i++) {
 		Particles* p = new Particles(ofColor(195, 195, 195));
 		addParticle(p);
@@ -15,6 +16,7 @@ ParticleEmitter::ParticleEmitter(ofColor colour, float xa, float ya, int amount)
 	this->xa = xa;
 	this->ya = ya;
 
+	//Creates a certain amount of particles
 	for (int i = 0; i < amount; i++) {
 		Particles* p = new Particles(colour);
 		addParticle(p);
@@ -25,6 +27,7 @@ void ParticleEmitter::update(float xOffset, float yOffset) {
 	xr = xa - xOffset;
 	yr = ya - yOffset;
 
+	//Updates each particle
 	for (int i = 0; i < particlesList->size(); i++) {
 		if (particlesList->at(i)->isRemoved()) {
 			delete particlesList->at(i);
@@ -37,6 +40,7 @@ void ParticleEmitter::update(float xOffset, float yOffset) {
 }
 
 void ParticleEmitter::draw() {
+	//Draws each Particle
 	for (int i = 0; i < particlesList->size(); i++) {
 		particlesList->at(i)->draw(xr, yr);
 	}

@@ -13,10 +13,10 @@ Sprite::Sprite(std::string path, float size) {
 }
 
 void Sprite::loadSprite(std::string path) {
+	//Loads image and gets size
 	sprite.load(path);
 	width = sprite.getWidth();
 	height = sprite.getHeight();
-	std::cout << "Sprite Loaded" << std::endl;
 }
 
 void Sprite::draw(float xPos, float yPos) {
@@ -29,6 +29,7 @@ void Sprite::setSize(int width, int height) {
 }
 
 void Sprite::setScale(float scale) {
+	//Changes size depending on scale
 	width = width * scale;
 	height = height * scale;
 }

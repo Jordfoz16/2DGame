@@ -1,6 +1,7 @@
 #include "Entity.h"
 
 Entity::Entity() {
+	//Default Values
 	xa = 0, ya = 0;
 	width = 10, height = 10;
 	mass = 1;
@@ -38,23 +39,23 @@ Entity::Entity(float posX, float posY, float width, float height, float rot) :
 }
 
 Entity::~Entity() {
-	std::cout << "Entity Destroyed" << std::endl;
 }
 
 void Entity::init() {
-
+	//This function is meant to be overwritten
 }
 
 void Entity::update(float xOffset, float yOffset) {
-
+	//This function is meant to be overwritten
 }
 
 void Entity::draw() {
-
+	//This function is meant to be overwritten
 }
 
 void Entity::move() {
 
+	//Either bounce of the walls or wraps to the other side
 	if (wrapping) {
 		if (xa > levelWidth) {
 			xa = 0;
@@ -86,14 +87,17 @@ void Entity::move() {
 		}
 	}
 
+	//Add friction to objects
 	velX *= friction;
 	velY *= friction;
 
+	//Adds a max speed to objects
 	if (velX > maxSpeed) velX = maxSpeed;
 	else if (velX < -maxSpeed) velX = -maxSpeed;
 	if (velY > maxSpeed) velY = maxSpeed;
 	else if (velY < -maxSpeed) velY = -maxSpeed;
 
+	//Moves the object
 	xa += velX;
 	ya += velY;
 }
@@ -109,12 +113,14 @@ void Entity::setVelocity(float velX, float velY) {
 }
 
 void Entity::setSpeed(float speed) {
+	//Finds the current angle and calculates out the new x and y speed
 	float curAngle = atan2f(velY, velX);;
 	curAngle = (180 / PI) * curAngle;
 	setSpeed(speed, curAngle);
 }
 
 void Entity::setSpeed(float speed, float angle) {
+	//Calculates out the x and y speed from the angle
 	angle = (PI / 180) * angle;
 	this->velX = cosf(angle) * speed * friction;
 	this->velY = sinf(angle) * speed * friction;
@@ -126,6 +132,7 @@ void Entity::setLevel(int width, int height) {
 }
 
 float Entity::getSpeed() {
+	//Calculates the speed from the x and y velocity
 	float currentSpeed = (velX * velX) + (velY * velY);
 	currentSpeed = sqrtf(currentSpeed);
 	return currentSpeed;
